@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>라크(Rak) 다이닝 | 하이엔드 오마카세 & 파인 다이닝</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Noto Serif KR"', 'serif'],
+                        sans: ['"Noto Sans KR"', 'sans-serif'],
+                    },
+                    colors: {
+                        stone: {
+                            50: '#fafaf9',
+                            100: '#f5f5f4',
+                            200: '#e7e5e4',
+                            300: '#d6d3d1',
+                            400: '#a8a29e',
+                            500: '#78716c',
+                            600: '#57534e',
+                            700: '#44403c',
+                            800: '#292524',
+                            900: '#1c1917',
+                        },
+                        gold: {
+                            400: '#d4af37',
+                            500: '#c5a028',
+                            600: '#aa8a22',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        /* 다크 모드 기본 설정 */
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #111111; color: #f5f5f4; }
+        h1, h2, h3, h4, h5, .font-serif { font-family: 'Noto Serif KR', serif; }
+        
+        /* Subtle fade-in animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Image overlay - 다크 모드에 맞춰 더 어둡게 */
+        .hero-overlay {
+            background: linear-gradient(to right, rgba(17, 17, 17, 0.8), rgba(17, 17, 17, 0.3));
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-[#111111]/90 backdrop-blur-md border-b border-stone-800" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center cursor-pointer">
+                    <span class="font-serif text-2xl tracking-widest text-gold-400">RAK DINING</span>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#about" class="text-stone-300 hover:text-gold-400 transition-colors text-sm font-medium tracking-wide">브랜드 스토리</a>
+                    <a href="#services" class="text-stone-300 hover:text-gold-400 transition-colors text-sm font-medium tracking-wide">메뉴 안내</a>
+                    <a href="#reservation" class="bg-gold-500 text-stone-900 px-6 py-2 rounded-sm hover:bg-gold-400 transition-colors text-sm font-bold tracking-wide">예약하기</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-stone-300 hover:text-white focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image (고해상도 AI 스시/다이닝 이미지 느낌) -->
+        <div class="absolute inset-0 w-full h-full">
+            <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=2070&auto=format&fit=crop" alt="Fine Dining Background" class="w-full h-full object-cover object-center" />
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+        
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-16 fade-in visible">
+            <p class="text-gold-400 text-sm md:text-base tracking-[0.3em] uppercase mb-4 font-medium">High-end Omakase & Dining</p>
+            <h1 class="text-4xl md:text-6xl text-white font-serif leading-tight mb-6">
+                오감을 깨우는<br>미식의 절정
+            </h1>
+            <p class="text-stone-300 text-base md:text-lg mb-10 font-light tracking-wide max-w-2xl mx-auto">
+                매일 아침 엄선된 식재료의 질감, 그리고 공간을 채우는 재즈 선율.<br>
+                단순한 식사가 아닌, 완벽하게 마감된 하나의 작품을 대접합니다.
+            </p>
+            <a href="#reservation" class="inline-block border border-gold-500 text-gold-500 bg-transparent hover:bg-gold-500 hover:text-stone-900 transition-all duration-300 px-8 py-3 text-sm tracking-widest font-bold uppercase">
+                Reservation
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-[#111111]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="fade-in order-2 md:order-1">
+                    <h2 class="text-3xl md:text-4xl font-serif text-white mb-6">완벽한 한 점을 위한<br>타협 없는 기다림</h2>
+                    <div class="w-12 h-0.5 bg-gold-500 mb-6"></div>
+                    <p class="text-stone-400 mb-6 leading-relaxed font-light">
+                        라크 다이닝은 혀끝에서 느껴지는 미각만을 좇지 않습니다. 눈으로 먼저 맛보는 시각적 즐거움, 접시에 부딪히는 경쾌한 소리, 공간을 감싸는 음악까지 모든 순간을 설계합니다.
+                    </p>
+                    <p class="text-stone-400 leading-relaxed font-light mb-8">
+                        당일 공수한 최고급 제철 식재료에 셰프의 정교한 터치를 더해, 고객님의 오늘 하루가 특별한 미식 경험으로 기억될 수 있도록 최선을 다하겠습니다.
+                    </p>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Signature_placeholder.svg/1200px-Signature_placeholder.svg.png" alt="Signature" class="w-32 opacity-40 invert">
+                </div>
+                <div class="fade-in order-1 md:order-2">
+                    <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?q=80&w=2070&auto=format&fit=crop" alt="Chef Preparing Food" class="w-full h-auto rounded-sm shadow-2xl border border-stone-800">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services (Menu) Section -->
+    <section id="services" class="py-24 bg-stone-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <p class="text-gold-500 text-sm tracking-widest uppercase mb-2 font-medium">Signature Menu</p>
+                <h2 class="text-3xl font-serif text-white">다이닝 코스 안내</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Menu 1 -->
+                <div class="group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden mb-6">
+                        <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?q=80&w=1925&auto=format&fit=crop" alt="Lunch Omakase" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors duration-500"></div>
+                    </div>
+                    <h3 class="text-xl font-serif text-gold-400 mb-2">런치 스탠다드 코스</h3>
+                    <p class="text-stone-400 font-light text-sm leading-relaxed mb-3">
+                        제철 해산물과 가벼운 애피타이저로 구성되어 정갈하게 즐길 수 있는 점심 한정 오마카세.
+                    </p>
+                    <span class="text-stone-300 font-serif">120,000 KRW</span>
+                </div>
+                
+                <!-- Menu 2 -->
+                <div class="group cursor-pointer fade-in" style="transition-delay: 200ms;">
+                    <div class="relative overflow-hidden mb-6">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=2069&auto=format&fit=crop" alt="Dinner Signature" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors duration-500"></div>
+                    </div>
+                    <h3 class="text-xl font-serif text-gold-400 mb-2">디너 시그니처 오마카세</h3>
+                    <p class="text-stone-400 font-light text-sm leading-relaxed mb-3">
+                        최상급 한우와 랍스터, 그리고 셰프의 창의적인 디저트까지 포함된 라크 다이닝의 대표 코스.
+                    </p>
+                    <span class="text-stone-300 font-serif">250,000 KRW</span>
+                </div>
+                
+                <!-- Menu 3 -->
+                <div class="group cursor-pointer fade-in" style="transition-delay: 400ms;">
+                    <div class="relative overflow-hidden mb-6">
+                        <img src="https://images.unsplash.com/photo-1559314809-0d155014e29e?q=80&w=2070&auto=format&fit=crop" alt="Premium Pairing" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors duration-500"></div>
+                    </div>
+                    <h3 class="text-xl font-serif text-gold-400 mb-2">셰프 스페셜 & 와인 페어링</h3>
+                    <p class="text-stone-400 font-light text-sm leading-relaxed mb-3">
+                        VIP룸에서 진행되는 프라이빗 다이닝. 각 코스에 완벽하게 어울리는 프리미엄 와인이 페어링됩니다.
+                    </p>
+                    <span class="text-stone-300 font-serif">380,000 KRW</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visual Banner -->
+    <section class="relative py-32 bg-black flex items-center justify-center fade-in">
+        <div class="absolute inset-0 opacity-30">
+            <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=2070&auto=format&fit=crop" alt="Wine and Atmosphere" class="w-full h-full object-cover">
+        </div>
+        <div class="relative z-10 text-center px-4">
+            <i class="fas fa-wine-glass text-3xl text-gold-500 mb-6 opacity-80"></i>
+            <h2 class="text-2xl md:text-3xl text-white font-serif leading-relaxed font-light italic max-w-3xl mx-auto">
+                "입안 가득 퍼지는 풍미와 귓가에 맴도는 재즈 선율.<br>
+                당신의 소중한 순간을 완벽한 미식으로 채워드립니다."
+            </h2>
+        </div>
+    </section>
+
+    <!-- Reservation Section (KakaoTalk CTA) -->
+    <section id="reservation" class="py-24 bg-[#111111]">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 fade-in">
+            <div class="bg-stone-900 p-10 md:p-16 shadow-2xl border border-stone-800">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-serif text-white mb-4">프라이빗 예약</h2>
+                    <p class="text-stone-400 font-light">최상의 식재료 준비를 위해 100% 사전 예약제로 운영됩니다.</p>
+                </div>
+                
+                <!-- 카카오톡 오픈채팅 연결을 위한 프리미엄 CTA 디자인 (다크 모드 최적화) -->
+                <div class="text-center bg-[#1a1a1a] p-8 md:p-12 rounded-sm border border-stone-800 shadow-inner">
+                    <div class="w-16 h-16 bg-[#FEE500] rounded-full flex items-center justify-center mx-auto mb-6 shadow-md">
+                        <i class="fas fa-comment text-stone-900 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-serif text-white mb-4">1:1 카카오톡 예약 및 상담</h3>
+                    <p class="text-stone-400 font-light mb-8 text-sm md:text-base leading-relaxed">
+                        원하시는 날짜와 인원, 그리고 못 드시는 식재료(알러지)를 편하게 남겨주시면<br class="hidden md:block">
+                        라크 다이닝 매니저가 신속하게 맞춤형 예약을 도와드립니다.
+                    </p>
+                    
+                    <!-- 링크(href) 부분에 대표님의 오픈 카카오톡 링크를 넣어주세요 -->
+                    <a href="https://open.kakao.com/o/대표님_오픈채팅링크" target="_blank" class="inline-flex items-center justify-center bg-[#FEE500] text-stone-900 px-10 py-4 text-sm font-bold tracking-widest hover:bg-[#e5ce00] transition-colors rounded-sm shadow-md w-full md:w-auto">
+                        <i class="fas fa-comment mr-3 text-lg"></i> 카카오톡으로 예약 문의하기
+                    </a>
+                    
+                    <p class="mt-6 text-xs text-stone-500 font-light">상담 가능 시간: 매일 11:00 - 22:00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-stone-500 py-12 border-t border-stone-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 text-sm font-light">
+            <div>
+                <span class="font-serif text-xl tracking-widest text-gold-500 block mb-4">RAK DINING</span>
+                <p class="mb-2">경기도 수원시 ㅇㅇ구 ㅇㅇ동 123-45</p>
+                <p>T. 031-000-0000</p>
+            </div>
+            <div>
+                <h4 class="text-stone-300 font-medium mb-4 uppercase tracking-wider text-xs">Business Hours</h4>
+                <p class="mb-1">Lunch : 12:00 PM - 15:00 PM</p>
+                <p class="mb-1">Dinner : 18:00 PM - 22:00 PM</p>
+                <p>Mon : Closed</p>
+            </div>
+            <div class="md:text-right">
+                <div class="flex space-x-4 md:justify-end mb-6">
+                    <a href="#" class="text-stone-500 hover:text-gold-400 transition-colors"><i class="fab fa-instagram text-xl"></i></a>
+                    <a href="#" class="text-stone-500 hover:text-gold-400 transition-colors"><i class="fab fa-youtube text-xl"></i></a>
+                    <a href="#" class="text-stone-500 hover:text-gold-400 transition-colors"><i class="fas fa-comment text-xl"></i></a>
+                </div>
+                <!-- Kmong Portfolio Badge -->
+                <div class="mt-8 pt-4 border-t border-stone-900 inline-block">
+                    <p class="text-xs text-stone-600">
+                        Designed & Powered by <strong class="text-gold-500">라크네 사진관</strong><br>
+                        * 본 사이트의 에셋(이미지/BGM)은 AI 기획 및 맞춤 제작되었습니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Intersection Observer for scroll animations (fade-in)
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(el => observer.observe(el));
+
+            // Navbar background change on scroll
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('bg-[#111111]/90', 'border-b', 'border-stone-800');
+                    navbar.classList.remove('bg-transparent', 'border-transparent');
+                } else {
+                    navbar.classList.add('bg-transparent', 'border-transparent');
+                    navbar.classList.remove('bg-[#111111]/90', 'border-b', 'border-stone-800');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
